@@ -24,7 +24,6 @@ public class TestEmloyee {
 				employeeService.addNewEmployee();
 			} catch (InvalidSalaryException e3) {
 				System.out.println(e3.getMessage());
-				//e3.printStackTrace();
 			}
 			break;
 		case 2:

@@ -66,11 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 				System.out.println(e.getMessage());
 				
 			}
-		}
-		
-		
-		
-		
+		}		
 	}
 	@Override
 	public Employee searchById(int id) throws EmployeeNotFoundException {
