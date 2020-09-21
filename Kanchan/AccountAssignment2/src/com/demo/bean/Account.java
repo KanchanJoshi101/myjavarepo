@@ -93,12 +93,6 @@ public abstract class Account {
   	public void deposit(double depositBal) {
   		accBalance=accBalance+depositBal;
   	}
-  	
-  	//Set new pin method  	
-	public void setNewPin(String id,int p1) {
-	      pinNumber=p1;
-	}
-	
 	//show Balance method
 	public String showBalance() {
 		return "Balance: "+accBalance;	

@@ -39,7 +39,17 @@ public class TestPersonSet {
 			
 			break;
 		case 3:
-			
+			System.out.println("Enter id");
+			id=sc.nextInt();
+			System.out.println("Enter new mobile number");
+			String mno=sc.next();
+			flag=personService.updatePerson(id,mno);
+			if (flag) {
+				System.out.println("updation done");
+			}
+			else {
+				System.out.println("person not found");
+			}
 			
 			break;
 		case 4:

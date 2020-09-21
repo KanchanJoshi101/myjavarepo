@@ -48,4 +48,36 @@ public class AccountDaoImpl implements AccountDao {
 		return acc;
 
 }
+   //TO WITHDRAW MONEY
+	@Override
+	public void withdraw(double amount,Account acc) {
+        acc.withdraw(amount);
+	}
+   //TO DEPOSIT MONEY
+	@Override
+	public void  deposit(double amount,Account acc) {
+        acc.deposit(amount);
+	}
+   //TO TRANSFER MONEY
+	@Override
+	public void  transfer(double amount,Account acc,Account acc1) {
+        acc.withdraw(amount);
+        acc1.deposit(amount);
+	}
+   // TO CHANGE THE PIN
+	@Override
+	public void  changePin(Account acc,int pin) {
+		acc.setPinNumber(pin);
+	}
+   // TO CHECK THE BALANCE
+	@Override
+	public String checkBalance(Account acc) {
+		return acc.showBalance();
+		
+	}
+   // TO DISPLAY ACCOUNT BY ID
+	@Override
+	public String displayAccount(Account acc) {
+		return acc.toString();		
+	}
 }

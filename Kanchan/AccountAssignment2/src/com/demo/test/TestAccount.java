@@ -11,6 +11,7 @@ import com.demo.exception.InvalidAccountTypeException;
 import com.demo.service.AccountServiceImpl;
 public class TestAccount {
      public static void main(String args[]){
+    	//creating object of service class to call service layer methods
     	 AccountService accountService=new AccountServiceImpl();
     	 int choice=0;
     	 do {

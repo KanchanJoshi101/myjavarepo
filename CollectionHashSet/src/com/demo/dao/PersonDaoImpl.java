@@ -39,4 +39,11 @@ public class PersonDaoImpl implements PersonDao{
 		return pset.remove(p);
 	}
 
+	@Override
+	public boolean updatePerson(String mno, Person p) {
+		p.setMobile(mno);
+		return true;
+		
+	}
+
 }

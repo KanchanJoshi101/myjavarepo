@@ -64,5 +64,15 @@ public class PersonServiceImpl implements PersonService{
 	public boolean deletePerson(int id) {
 		return perDao.deletePerson(id);
 	}
+
+	@Override
+	public boolean updatePerson(int id, String mno) {
+		Person p=perDao.searchPerById(id);
+		if(p!=null) {
+		return perDao.updatePerson(mno,p);
+		}
+		return false;
+		
+	}
       
 }

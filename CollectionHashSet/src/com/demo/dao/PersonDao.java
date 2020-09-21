@@ -14,4 +14,6 @@ public interface PersonDao {
 
 	boolean deletePerson(int id);
 
+	boolean updatePerson(String mno, Person p);
+
 }

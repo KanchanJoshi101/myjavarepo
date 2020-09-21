@@ -18,7 +18,8 @@ public class AccountServiceImpl implements AccountService {
 		sdf=new SimpleDateFormat("dd/MM/yyyy");
 	}
 	private  AccountDao  accountDao;
-	private Account a;
+	private Account acc;
+	//creating object of dao class to call dao layer methods
 	public  AccountServiceImpl() {
 		this.accountDao = new  AccountDaoImpl();
 	}
@@ -51,16 +52,16 @@ public class AccountServiceImpl implements AccountService {
     	    double interestRate=sc.nextDouble();
     		System.out.println("Enter your cheque book no.");
     		String chequebookNo=sc.next();
-    		a=new SavingAccount(nm,accType,bdate,pin,interestRate,bal,chequebookNo);
-    		accountDao.addAccount(a);
+    		acc=new SavingAccount(nm,accType,bdate,pin,interestRate,bal,chequebookNo);
+    		accountDao.addAccount(acc);
     	}
     	else
     	{   
     		accType="Current";
     		System.out.println("Enter interest rate for current account");
      	    double interestRate=sc.nextDouble();
-    		a=new CurrentAccount(nm,accType,bdate,pin,interestRate,bal);
-    		accountDao.addAccount(a);
+    		acc=new CurrentAccount(nm,accType,bdate,pin,interestRate,bal);
+    		accountDao.addAccount(acc);
     	}	
     	
 	}
@@ -75,9 +76,9 @@ public class AccountServiceImpl implements AccountService {
 	//WITHDRAW MONEY
 	@Override
 	public boolean withdrawMoney(String id, double amount)throws AccountNotFoundException{
-		a=accountDao.searchByAccId(id);
-		if(a!=null) {
-		 a.withdraw(amount);
+		acc=accountDao.searchByAccId(id);
+		if(acc!=null) {
+		 accountDao.withdraw(amount,acc);
 		 System.out.println("Amount Successfully Withdrawn");
 		 return true;
 		}
@@ -88,9 +89,9 @@ public class AccountServiceImpl implements AccountService {
 	//DEPOSIT MONEY
 	@Override
 	public boolean depositMoney(String id, double amount)throws AccountNotFoundException{
-		Account a=accountDao.searchByAccId(id);
-		if(a!=null) {
-		a.deposit(amount);
+		acc=accountDao.searchByAccId(id);
+		if(acc!=null) {
+		accountDao.deposit(amount,acc);
 		System.out.println("Amount Successfully Deposited");
 		return true;
 		}
@@ -101,11 +102,10 @@ public class AccountServiceImpl implements AccountService {
 	//TRANSFER MONEY
 	@Override
 	public boolean transferMoney(String id,String id1,double amount)throws AccountNotFoundException{
-		Account a=accountDao.searchByAccId(id);
-		Account a1=accountDao.searchByAccId(id1);
-		if(a!=null) {
-		a.withdraw(amount);	
-		a1.deposit(amount);
+		acc=accountDao.searchByAccId(id);
+		Account acc1=accountDao.searchByAccId(id1);
+		if(acc!=null && acc!=null) {
+		accountDao.transfer(amount,acc,acc1);
 		System.out.println("Amount Successfully Transferred");
 		return true;
 		}
@@ -116,14 +116,14 @@ public class AccountServiceImpl implements AccountService {
 	//CHANGE PIN
 	@Override
 	public boolean changePin(String id)throws AccountNotFoundException{
-		Account a=accountDao.searchByAccId(id);
-	    if(a!=null)
+		acc=accountDao.searchByAccId(id);
+	    if(acc!=null)
 		{	
 	    	System.out.println("Enter old PIN");
 	    	int pin=sc.nextInt();	
 		    System.out.println("Enter new PIN");
 	    	int pin1=sc.nextInt();
-	    	a.setNewPin(id,pin1);
+	    	accountDao.changePin(acc,pin1);
 			System.out.println("Pin changed Successfully");
 		}	    
 		return false;
@@ -132,20 +132,21 @@ public class AccountServiceImpl implements AccountService {
 	//CHECK BALANCE
 	@Override
 	public void checkBalance(String id)throws AccountNotFoundException{
-		Account a=accountDao.searchByAccId(id);
-	    if(a!=null)
+		acc=accountDao.searchByAccId(id);
+	    if(acc!=null)
 		{	
-	    	System.out.println(a.showBalance());
+	    	String bal=accountDao.checkBalance(acc);
+	    	System.out.println(bal);
 		}	    
 	}
 	
 	//DISPLAY ALL ACCOUNTS
 	@Override
 	public void displayAccount(String id) throws AccountNotFoundException{
-		Account a=accountDao.searchByAccId(id);
-	    if(a!=null)
+		acc=accountDao.searchByAccId(id);
+	    if(acc!=null)
 		{	
-	    	System.out.println(a.toString());
+	    	System.out.println(accountDao.displayAccount(acc));
 		}	 
 	}
 }

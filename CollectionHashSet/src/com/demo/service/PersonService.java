@@ -14,6 +14,8 @@ public interface PersonService {
 
 	boolean deletePerson(int id);
 
+	boolean updatePerson(int id, String mno);
+
 
 
 }
