@@ -30,10 +30,39 @@ public class TestCRUDusingfile {
 			}
 			break;
 		case 2:
+			System.out.println("Enter product id");
+			int id=sc.nextInt();
+			flag=productService.deleteProduct(id);
+			if (flag) {
+				System.out.println("deletion done");
+			}
+			else {
+				System.out.println("product not found");
+			}
 			break;
 		case 3:
+			System.out.println("Enter id");
+			id=sc.nextInt();
+			System.out.println("Enter new price");
+			double price=sc.nextDouble();
+			System.out.println("Enter new Quantity");
+			int qty=sc.nextInt();
+			flag=productService.updateProduct(id,price,qty);
+			if (flag) {
+				System.out.println("updation done");
+			}
+			else {
+				System.out.println("person not found");
+			}
 			break;
 		case 4:
+			System.out.println("Enter id");
+			id=sc.nextInt();
+			Product pro=productService.getProduct(id);
+			if(pro!=null)
+			System.out.println(pro);
+			else
+			System.out.println("Product not found");
 			break;
 		case 5:
 			//get all products

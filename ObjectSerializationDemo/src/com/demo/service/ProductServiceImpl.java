@@ -43,6 +43,7 @@ private ProductDao productDao;
 	public Set<Product> getProductList() {
 		return productDao.getAllProduct();
 	}
+	//reading data from file in the beginning
 	@Override
 	public void readData(String fname) {
 		productDao.readDatafromFile(fname);
@@ -54,6 +55,29 @@ private ProductDao productDao;
 	public void writeData(String fname) {
 		productDao.writeDataToFile(fname);
 		
+	}
+	//delete product from dao layer
+	@Override
+	public boolean deleteProduct(int id) {
+		return productDao.deleteProduct(id);
+	}
+	//update product in the dao layer
+	@Override
+	public boolean updateProduct(int id, double price,int qty) {
+		Product pro=productDao.searchProductById(id);
+		if(pro!=null)
+		{
+			return productDao.updateProduct(pro,price,qty);
+		}else {
+			 return false;
+		}
+		
+	}
+	@Override
+	public Product getProduct(int id) {
+         Product pro=productDao.searchProductById(id);
+   		 return pro;
+         
 	}
 
 }

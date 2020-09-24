@@ -37,7 +37,7 @@ public class ProductDaoImpl implements ProductDao{
 					Product p=(Product) ois.readObject();
 					hashSet.add(p);
 					}catch(EOFException e) {
-						System.out.println("Reched to EOF......");
+						System.out.println("eched to EOF......");
 						break;
 					}
 				}
@@ -74,5 +74,27 @@ public class ProductDaoImpl implements ProductDao{
 		}
 		
 	}
-
+	//delete product
+	@Override
+	public boolean deleteProduct(int id) {
+		Product p=new Product(id,null,0.0,0);
+		return hashSet.remove(p);
+	}
+	//update product
+	@Override
+	public boolean updateProduct(Product pro, double price,int qty) {
+		pro.setPrice(price);
+		pro.setQty(qty);
+		return true;
+	}
+    //search product
+	@Override
+	public Product searchProductById(int id) {
+		for(Product pro:hashSet) {
+			if(pro.getPid()==id) {
+				return pro;
+			}
+		}
+		return null;
+	}
 }

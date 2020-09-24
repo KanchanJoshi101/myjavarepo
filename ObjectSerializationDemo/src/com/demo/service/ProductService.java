@@ -20,4 +20,16 @@ public interface ProductService {
 
 	void writeData(String string);
 
+
+
+	boolean deleteProduct(int id);
+
+
+
+	boolean updateProduct(int id, double price,int qty);
+
+
+
+	Product getProduct(int id);
+
 }

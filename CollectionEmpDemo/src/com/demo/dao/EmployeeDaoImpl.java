@@ -30,6 +30,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		  //e=new ContractEmp();
 		}
 		int pos=elist.indexOf(e);
+		//index of function will by default call the equals function in Product class
 		if(pos!=-1)
 		{
 			return elist.get(pos);
