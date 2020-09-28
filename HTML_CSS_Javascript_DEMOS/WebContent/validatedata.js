@@ -49,25 +49,36 @@ function validateHobbies(){
 	   return false;
 	
 }
+function validateCaptcha(){
+	
+	alert(" in validate Captha");
+	   var captcha=document.getElementById("captcha").innerHTML;
+	   var cap=document.getElementById("cap").value;
+	   alert(captcha+"----"+cap);
+	   if(captcha==cap){
+		   document.getElementById("errcaptcha").innerHTML="";
+		   return true;
+	   }
+	   else{
+		   document.getElementById("errcaptcha").innerHTML="captcha doesnot match";
+		   return false;
+	   }
+}
+
 
    function validatedata(){
 	   alert("validatedata");
 	   var flag1=validatepass();
-	   
 	   var flag2=validateDegree();
-	   alert("flag1 :"+flag1+"flag 2: "+flag2);
 	   var flag3=validateHobbies();
-	   if(flag1){//}&& flag2 && flag3){
+	   var flag4=validateCaptcha();
+	   alert("flag1 :"+flag1+"flag 2: "+flag2+"flag 3: "+flag3+"flag 4: "+flag4);
+	   
+	   if(flag1 && flag2 && flag3 && flag4){
 		   return true;
 	   }
 	   else{
 		   return false;
 	   }
 	   return false;
-	   
-	   
-	   
-	   
-	   
-	   
    }

@@ -7,8 +7,9 @@ import java.sql.SQLException;
 public class DBUtil {
 	static Connection conn=null;
 	public static Connection getMyConnection() {
+		System.out.println("In get my connection");
 		if(conn==null) {
-			String url = "jdbc:derby:c:\\mydata\\hsbcdb";
+			String url = "jdbc:derby:d:\\mydata\\hsbcdb1";
 	        String user = "hsbc";
 	        String password = "hsbc123";
 	        try {
