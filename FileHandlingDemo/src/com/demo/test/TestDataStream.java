@@ -17,9 +17,11 @@ public class TestDataStream {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		//using autoclosable rsource
-		try(//DataOutputStream dos=new DataOutputStream(new FileOutputStream("mycopy1.dat"));
+		try(DataOutputStream dos=new DataOutputStream(new FileOutputStream("mycopy1.dat"));
+				
 			DataInputStream dis=new DataInputStream(new FileInputStream("mydata.dat"));
 				) {
+<<<<<<< HEAD
 			while(dis!=null)
 			{
 				try{
@@ -42,12 +44,20 @@ public class TestDataStream {
 
 }
 
+=======
+			String s1=dis.readLine();
+>>>>>>> 95f54c048a4d59bc767c44e39c7c83a23fc474ad
 			
 			//Scanner sc=new Scanner()
 			//StringTokenizer
 			
+<<<<<<< HEAD
 			//System.out.println(s1);
 			/*System.out.println("enter number");
+=======
+			System.out.println(s1);
+			System.out.println("enter number");
+>>>>>>> 95f54c048a4d59bc767c44e39c7c83a23fc474ad
 			int id=sc.nextInt();
 			System.out.println("enter name");
 			sc.nextLine();
@@ -63,7 +73,7 @@ public class TestDataStream {
 			int num=dis.readInt();
 			String name=dis.readUTF();
 			double price=dis.readDouble();
-			System.out.println(num+","+name+","+price);*/
+			System.out.println(num+","+name+","+price);
 			
 			       
 			
